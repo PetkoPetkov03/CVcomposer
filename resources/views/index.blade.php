@@ -32,10 +32,10 @@
                     <form method="POST" id="uniForm">
                         @csrf
                         <div class="mb-3">
-                            <input type="text" id="uni_name" name="uni_name" class="form-control">
+                            <input type="text" id="uni_name" name="uni_name" class="form-control" required>
                         </div>
                         <div class="mb-3">
-                            <input type="number" id="grade" name="grade" class="form-control">
+                            <input type="number" id="grade" name="grade" class="form-control" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
@@ -43,10 +43,12 @@
             </div>
         </div>
 
-        <div class="picker-container">
+        <div class="picker-container" id="tech-picker">
             <p>Умения в технологии (multichoice)</p>
-            <select name="" id="" multiple>
-                <option value="PHP">PHP</option>
+            <select name="tech-picker" id="tech-picker" class="picker" multiple>
+                @foreach ($tech as $item)
+                    <option value="{{ $item->id }}">{{ $item->tech_name }}</option>                   
+                @endforeach
             </select>
         </div>
 
@@ -60,7 +62,7 @@
                         @csrf
                         <div class="mb-3">
                             <label for="input1" class="form-label">Input 1:</label>
-                            <input type="text" id="input1" name="input1" class="form-control">
+                            <input type="text" id="tech_name" name="tech_name" class="form-control" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
@@ -72,4 +74,5 @@
     </div>
 
     <script src="{{ url("js/uni.js") }}"></script>
+    <script src="{{ url("js/tech.js") }}"></script>
 @endsection

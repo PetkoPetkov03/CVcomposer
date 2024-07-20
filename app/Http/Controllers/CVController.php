@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CV;
+use App\Models\Tech;
 use App\Models\University;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,9 @@ class CVController extends Controller
     public function index()
     {
         $universities = University::all();
-        return view("index", ['universities' => $universities])->with("uniStoreUrl", 'uni.store');
+        $tech = Tech::all();
+        
+        return view("index", ['universities' => $universities, "tech" => $tech]);
     }
 
     /**

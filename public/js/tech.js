@@ -1,16 +1,16 @@
-const reloadUni = () => {
+const reloadTech = () => {
     $.ajax({
-        url: '/uni',
+        url: '/tech',
         type: 'get',
         success: function (data) {
-            var $select = $('#uni-picker .picker');
+            const $select = $('#tech-picker .picker');
 
             $select.find('option:not([value=""])').remove();
 
-            $.each(data, function (index, university) {
+            $.each(data, function (index, tech) {
                 $select.append($('<option>', {
-                    value: university.id,
-                    text: university.uni_name
+                    value: tech.id,
+                    text: tech.tech_name
                 }));
             });
         },
@@ -21,10 +21,9 @@ const reloadUni = () => {
 }
 
 $(document).ready(function () {
-    const modal = $('#uniModal');
-    modal.hide();
+    const modal = $('#techModal');
 
-    $('#openUniModalBtn').click(function () {
+    $('#openTechModalBtn').click(function () {
         modal.show();
     });
 
@@ -38,20 +37,20 @@ $(document).ready(function () {
         }
     });
 
-    $('#uniForm').on("submit", function (event) {
+    $('#techForm').on("submit", function (event) {
         event.preventDefault();
 
         $.ajax({
             type: 'post',
-            url: "uni/add",
-            data: $('#uniForm').serialize(),
+            url: "tech/add",
+            data: $('#techForm').serialize(),
             dataType: "json",
             success: function (response) {
                 if (response.success === true) {
-                    document.querySelector("#response-message").innerHTML = "University successfully added!";
-                    reload();
+                    document.querySelector("#response-message").innerHTML = "Tech successfully added!";
+                    reloadTech();
                 } else {
-                    document.querySelector("#response-message").innerHTML = response.msg;
+                    console.log(response.msg);
                 }
 
 
