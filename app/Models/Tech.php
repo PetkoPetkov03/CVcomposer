@@ -9,10 +9,14 @@ class Tech extends Model
 {
     use HasFactory;
 
-    protected $table = "tech";
+    protected $table = "techs";
 
     protected $fillable = [
-        "id",
-        "tech_name",
+        'tech_name'
     ];
+    
+    public function cvs()
+    {
+        return $this->belongsToMany(Cv::class, 'cv_technology');
+    }
 }

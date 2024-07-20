@@ -11,9 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tech', function (Blueprint $table) {
+        Schema::create('techs', function (Blueprint $table) {
             $table->id();
             $table->longText('tech_name');
+            $table->foreignId('cv_id')->nullable()->onDelete('cascade');
+            $table->timestamps();
+        });
+
+        Schema::create('cv_technology', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('c_v_id')->constrained('c_v_s')->onDelete('cascade');
+            $table->foreignId('tech_id')->constrained('techs')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -23,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tech');
+        Schema::dropIfExists('techs');
     }
 };

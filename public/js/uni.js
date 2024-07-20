@@ -49,7 +49,7 @@ $(document).ready(function () {
             success: function (response) {
                 if (response.success === true) {
                     document.querySelector("#response-message").innerHTML = "University successfully added!";
-                    reload();
+                    reloadUni();
                 } else {
                     document.querySelector("#response-message").innerHTML = response.msg;
                 }

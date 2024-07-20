@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\University;
+use App\Models\Uni;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -13,7 +13,7 @@ class UniController extends Controller
      */
     public function index()
     {
-        $universities = University::all();
+        $universities = Uni::all();
 
         return $universities;
     }
@@ -41,11 +41,10 @@ class UniController extends Controller
         }
 
         try {
-            $addUni = new University;
-            $addUni->uni_name = $request->uni_name;
-            $addUni->grade = $request->grade;
-
-            $addUni->save();
+            $uni = Uni::create([
+                "uni_name" => $request->uni_name,
+                "grade" => $request->grade,
+            ]);
 
             return response()->json(['success' => true, 'msg' => "University added successfully!"]);
         } catch (\Exception $e) {
@@ -56,7 +55,7 @@ class UniController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(University $university)
+    public function show(Uni $university)
     {
         return 'show';
     }
@@ -64,7 +63,7 @@ class UniController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(University $university)
+    public function edit(Uni $university)
     {
         return 'edit';
     }
@@ -72,7 +71,7 @@ class UniController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, University $university)
+    public function update(Request $request, Uni $university)
     {
         //
     }
@@ -80,7 +79,7 @@ class UniController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(University $university)
+    public function destroy(Uni $university)
     {
         //
     }

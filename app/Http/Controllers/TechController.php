@@ -40,11 +40,9 @@ class TechController extends Controller
         }
 
         try {
-            $tech = new Tech();
-
-            $tech->tech_name = $request->tech_name;
-
-            $tech->save();
+            Tech::create([
+                "tech_name" => $request->tech_name,
+            ]);
 
             return response()->json(["success" => true, "msg" => "New technology added!"]);
         }catch(\Exception $e) {
