@@ -18,3 +18,7 @@ Route::get("/tech", [TechController::class, "index"])->name("tech");
 Route::post("/cv/add", [CVController::class, "store"])->name("cv.store");
 
 Route::get("/cv/show/{person}/{cv}", [CVController::class, "show"])->name("cv.show");
+
+Route::get("cv/date", [CVController::class, "showByDate"])->name("cv.date");
+
+Route::get("cv/agregate", [CVController::class, "agregate"])->name("cv.agregate");

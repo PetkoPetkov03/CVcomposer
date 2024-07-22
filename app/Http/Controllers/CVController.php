@@ -6,7 +6,10 @@ use App\Models\CV;
 use App\Models\Person;
 use App\Models\Tech;
 use App\Models\Uni;
+use App\Services\Aggregator;
+use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Validator;
 
 class CVController extends Controller
@@ -50,13 +53,13 @@ class CVController extends Controller
 
         try {
             $person = Person::where('first_name', $request->first_name)
-                    ->where('middle_name', $request->middle_name)
-                    ->where('last_name', $request->last_name)
-                    ->where('date_of_birth', $request->date_of_birth)
-                    ->first();
+                ->where('middle_name', $request->middle_name)
+                ->where('last_name', $request->last_name)
+                ->where('date_of_birth', $request->date_of_birth)
+                ->first();
 
             if ($person) {
-                return redirect()->route("cv.show", ["person" => $person, "cv" => $person->cv]);
+                return redirect()->route('cv.show', ['person' => $person, 'cv' => $person->cv]);
             }
 
             $person = Person::create([
@@ -87,7 +90,23 @@ class CVController extends Controller
      */
     public function show(Person $person, CV $cv)
     {
-        return view("CV", ["cv" => $cv, "person" => $person]);
+        return view('CV', ['cv' => $cv, 'person' => $person]);
+    }
+
+    public function showByDate(Request $request)
+    {
+        $people = Person::whereBetween('date_of_birth', [$request->from, $request->to])->get();
+
+        return view('CVchoose', ['people' => $people]);
+    }
+
+    public function agregate(Request $request)
+    {
+        $agregator = new Aggregator();
+
+        $agregator->agregate();
+
+        return view('agregate', ['data' => $agregator->getAggregatedData()]);
     }
 
     /**
