@@ -33,7 +33,7 @@ class UniController extends Controller
         }
 
         try {
-            $uni = Uni::create([
+            Uni::create([
                 "uni_name" => $request->uni_name,
                 "grade" => $request->grade,
             ]);
