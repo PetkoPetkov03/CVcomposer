@@ -30,3 +30,41 @@
     text-decoration: none;
     cursor: pointer;
 }
+
+.form {
+    display: flex;
+    border: 2px solid black;
+    width: 50vw;
+    margin-left: 25vw;
+    padding: 3vw;
+}
+
+.form>form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.form>form>button {
+    border: none;
+    background: none;
+
+    border: 3px solid limegreen;
+    border-radius: 30px;
+    width: 20vw;
+    align-self: center;
+    justify-self: center;
+    background-color: limegreen;
+    color:white
+}
+
+.form >form>button:hover {
+    border-color: aqua;
+    background-color: aqua;
+}
+
+.form>form>button:active {
+    border-color: green;
+    background-color: green;
+}

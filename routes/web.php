@@ -7,8 +7,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [CVController::class, "create"])->name("index");
 
-Route::get('/done', [CVController::class, "index"])->name("done");
-
 Route::post("/uni/add", [UniController::class, "store"])->name("uni.store");
 Route::get("/uni", [UniController::class, "index"])->name("uni");
 

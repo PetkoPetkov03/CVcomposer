@@ -1,5 +1,5 @@
 @extends('templates/base')
-<link rel="stylesheet" href="css/index.css">
+<link rel="stylesheet" href="{{ asset("css/index.css") }}">
 @section('content')
     <div class="form">
         <form action="{{ route('cv.store') }}" method="POST">
@@ -20,7 +20,7 @@
                 <select name="uni" class="picker" required>
                     <option value="" disabled selected>Избиране на университет...</option>
                     @foreach ($universities as $university)
-                        <option value="{{ $university->id }}">{{ $university->uni_name }}</option>
+                        <option value="{{ $university->id }}">{{ $university->uni_name }} : Оценка({{ $university->grade }})</option>
                     @endforeach
                 </select>
             </div>

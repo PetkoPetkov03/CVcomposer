@@ -15,8 +15,10 @@
         <div class="content">
             <nav>
                 <a href="/"><h1>CV composer</h1></a>
-                <li><a href="/cv/agregate">Аггрегация</a></li>
-                <li><a href="/cv/date">филтрирай CV-та чрез дата</a></li>
+                <div class="links">
+                    <li><a href="/cv/agregate">Аггрегация</a></li>
+                    <li><a href="/cv/date">филтрирай CV-та чрез дата</a></li>
+                </div>
             </nav>
             <div class="message-container" id="message-container">
                 <h1 class="response-message" id="response-message"></h1>

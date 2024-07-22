@@ -12,3 +12,36 @@
     width: max-content;
     height: max-content;
 }
+
+nav {
+    display: flex;
+    width: 100vw;
+    height: 15vh;
+    border-bottom: 1px solid whitesmoke;
+    margin-bottom: 5vh;
+    box-shadow: 5px 15px 10px 3px whitesmoke;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav>a {
+    padding: 2vw;
+}
+
+nav>.links {
+    width: 30vw;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav>.links>li>a {
+    text-decoration: none;
+    font-size: large;
+    color: black;
+}
+
+nav>a {
+    text-decoration: none;
+    font-size: large;
+    color: black;
+}
