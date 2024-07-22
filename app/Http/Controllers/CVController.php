@@ -15,14 +15,6 @@ use Illuminate\Support\Facades\Validator;
 class CVController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        return 'Hello';
-    }
-
-    /**
      * Show the form for creating a new resource.
      */
     public function create()
@@ -77,7 +69,7 @@ class CVController extends Controller
             ]);
 
             $cv->technologies()->attach($request->tech);
-            return redirect()->route('done');
+            return redirect()->route('cv.show', [$person->id, $cv->id]);
         } catch (\Exception $e) {
             return response()->json(['success' => false, 'msg' => $e->getMessage()]);
         }
@@ -107,29 +99,5 @@ class CVController extends Controller
         $agregator->agregate();
 
         return view('agregate', ['data' => $agregator->getAggregatedData()]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(CV $cV)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, CV $cV)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(CV $cV)
-    {
-        //
     }
 }

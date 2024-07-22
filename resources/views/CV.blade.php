@@ -6,15 +6,15 @@
             <h1>{{ $person->first_name }}</h1>
             <h1>{{ $person->middle_name }}</h1>
             <h1>{{ $person->last_name }}</h1>
-            <p>Date of Birth: {{ $person->date_of_birth }}</p>
+            <p>Дата на раждане: {{ $person->date_of_birth }}</p>
         </div>
 
         <div class="CV-info">
-            <p>University name: {{ $cv->university->uni_name }}</p>
-            <p>University grade: {{ $cv->university->grade }}</p>
+            <p>Име на университет: {{ $cv->university->uni_name }}</p>
+            <p>Оценка от университет: {{ $cv->university->grade }}</p>
 
             <p>
-                TechStack: 
+                Технически стак: 
             @foreach ($cv->technologies as $tech)
                 {{ $tech->tech_name }},
             @endforeach</p>

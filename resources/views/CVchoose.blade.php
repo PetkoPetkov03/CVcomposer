@@ -5,7 +5,7 @@
         <form action="{{ route("cv.date") }}" method="get">
             <input type="date" name="from" id="from">
             <input type="date" name="to" id="to">
-            <button type="submit">Find</button>
+            <button type="submit">Търси</button>
         </form>
 
         @foreach ($people as $person)
@@ -14,7 +14,7 @@
                 <p>{{ $person->middle_name }}</p>
                 <p>{{ $person->last_name }}</p>
 
-                <button type="submit">open</button>
+                <button type="submit">Отвори</button>
             </form>
         @endforeach
     </div>

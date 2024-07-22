@@ -50,12 +50,12 @@
                     <form action="{{ route('uni.store') }}" method="POST" id="uniForm">
                         @csrf
                         <div class="mb-3">
-                            <input type="text" id="uni_name" name="uni_name" class="form-control" required>
+                            <input type="text" id="uni_name" name="uni_name" class="form-control" placeholder="Име на университет" required>
                         </div>
                         <div class="mb-3">
-                            <input type="number" id="grade" name="grade" class="form-control" required>
+                            <input type="number" id="grade" name="grade" class="form-control" placeholder="Оценка" required>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Запази</button>
                     </form>
                 </div>
             </div>
@@ -72,10 +72,10 @@
                     <form action="{{ route('tech.store') }}" method="POST" id="techForm">
                         @csrf
                         <div class="mb-3">
-                            <label for="tech_name" class="form-label">Input 1:</label>
+                            <label for="tech_name" class="form-label">Технология:</label>
                             <input type="text" id="tech_name" name="tech_name" class="form-control" required>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Запази</button>
                     </form>
                 </div>
             </div>
